@@ -47,10 +47,15 @@
 			<a class="navbar-brand" href="index.html">
 				<img src="assets/images/loog.png" alt="Eduhash" class="img-fluid">
 			</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+
+			<!-- Toggler -->
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="fa fa-bars"></span>
 			</button>
-            <div class="collapse navbar-collapse" id="navbarMenu">
+
+			<!-- Collapse -->
+			<div class="collapse navbar-collapse" id="navbarMenu">
 			   
 				<ul class="navbar-nav mx-auto">
 					<li class="nav-item dropdown">
@@ -80,8 +85,8 @@
 							<a class="dropdown-item " href="Matiers.php">
 							Matiers
 							</a> 
-							<a class="dropdown-item " href="Option">
-							Option
+							<a class="dropdown-item " href="Option.php">
+								Option
 							</a> 
 							<a class="dropdown-item " href="piece.php">
                                     piece
@@ -130,7 +135,7 @@
 					  
 					</div>
 
-					<form action="Matires.php"methode="GET" class="header-form ml-3" >
+					<form action="gouvernorats.php"methode="GET" class="header-form ml-3" >
 						<input type="text" name="search" class="form-control" placeholder="search" id=myTable>
 						<i class="fa fa-search"value="Rechercher"></i>
 					</form> 
@@ -141,73 +146,72 @@
 	</nav>
 </div>
 </header>
-<div>
+
+
+
+    	
+<div class="container">
 	
 <br><br>
-<a href="addoption.php" class="Btn_add"><img src="assets/images/GouvImg/plus.png"> Ajouter</a>
+<a href="AjoutPiece.php" class="Btn_add"><img src="assets/images/GouvImg/plus.png"> Ajouter</a>
 
 
-
+<div class="row">
   
 
 </div>
 
+<div class="height10"></div>
 
-<table id="datatable" class="table table-striped">
-<tr>
-            <th>code option</th>
-            <th>option_name</th>
-            <th>department</th>
-            <th>option_Arab</th>
-            <th>Action</th>
-        </tr>
-    
-		<?php
-		    include_once "ConnexionPDO.php";
+<div class="row">
+        <table id=myTable  class="table table-bordered table-striped">
+            <tr>
+            <th>Type de pièce</th>
+                <th>Libellé de la pièce</th>
+                <th>Action</th>
+                </tr>
 
-			$query = "SELECT * FROM options";
+<?php
 
-			$stmt = $idcon->query($query);
-		 	$stmt->setFetchMode(PDO::FETCH_ASSOC);
-		  while ($ligne = $stmt->fetch()) {
-			echo " <tr>
-                <td>".$ligne["Code_Option"]."</td>
-                <td>". $ligne["Option_Name"]."</td>
-                <td>". $ligne["Departement"]."</td>
-                <td>". $ligne["Option_AraB"]."</td>
+include_once "ConnexionPDO.php";
+
+
+$req = "SELECT * FROM  piece ";
+
+$stmt = $idcon->query($req);
+$stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+while ($ligne = $stmt->fetch()) {
+$Typepiece = $ligne['Typepiece']; // Extract the gouvernorat value
+echo "<tr>
+                <td>".$ligne['Typepiece'] ."</td>
+                <td>".$ligne['LibPiece']."</td>
                 <td>
-                    <a href='updateoption.php?Code_Option=". $ligne["Code_Option"]."'><img src='assets/images/GouvImg/pen.png'></a>
-                 <a  href='DeleteOP.php?Code_Option=". $ligne["Code_Option"] ."'><img src='assets/images/GouvImg/trash.png'></a>
-    
-                </td>
-            </tr>";
-		}
-         
-        ?>
-   
+
+                <a href='modifierGOV.php?updateTypepiece=" . $Typepiece . "'><img src='assets/images/GouvImg/pen.png'></a>
+                <a href='supprimer.php?Typepiece=" . $Typepiece . "' ><img src='assets/images/GouvImg/trash.png'></a>
+
+            </td></tr>";
+}
+
+?>
 </table>
 </div>
-
 </section>
 
-
-
-
+<script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.min.js"></script>
 <script>
-$(document).ready(function(){
-	//inialize datatable
-    $('#myTable').DataTable
-	({
-        dom: 'Bfrtip',
-        fixedHeader: true,
-        autoFill: true,
-        autoWidth: true,
-        stateSave: true,
-
-        "lengthMenu": [[10,25,50,100,-1], [10,25,50,100,"All"]],
-        "language": {
-            "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
-        },
+$(document).ready(function () {
+$('#myTable').DataTable({
+    dom: 'Bfrtip',
+    fixedHeader: true,
+    autoFill: true,
+    autoWidth: true,
+    stateSave: true,
+    "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+    "language": {
+        "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+    },
 });
 });
 </script>

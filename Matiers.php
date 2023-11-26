@@ -85,12 +85,12 @@
 							<a class="dropdown-item " href="Matiers.php">
 							Matiers
 							</a> 
-							<a class="dropdown-item " href="Option.php">
-								Option
-							</a> 
-							 <a class="dropdown-item " href="course-single.html">
-								table 7+8
-							</a> 
+							<a class="dropdown-item " href="option.php">
+                                    option
+                                </a> 
+								<a class="dropdown-item " href="piece.php">
+                                    piece
+                                </a> 
 							<a class="dropdown-item " href="course-single2.html">
 								table 8+9
 							</a> 
