@@ -1,0 +1,50 @@
+.prof-situation-table {
+  margin-top: 30px;
+
+  margin-left: 12px;
+
+  border-collapse: collapse;
+  width: 98%;
+}
+
+.prof-situation-table th,
+.prof-situation-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.prof-situation-table th {
+  background-color: #333;
+  color: white;
+}
+
+.update-button {
+  text-decoration: none;
+}
+
+.delete-button {
+  text-decoration: none;
+}
+.fas {
+  margin-left: 30px;
+}
+a.update-button,
+a.delete-button {
+  display: inline-flex; /* Use flexbox to control layout */
+  align-items: center; /* Vertically align content */
+  justify-content: center; /* Horizontally center content */
+  padding: 0px; /* Adjust padding as needed */
+  text-decoration: none;
+  color: white;
+  /* Set a fixed width and height */
+  width: 30px;
+
+  height: 30px;
+}
+td.hide-column {
+  width: fit-content;
+}
+a.update-button {
+  margin-right: 30px;
+}

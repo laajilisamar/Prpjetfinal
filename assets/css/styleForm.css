@@ -108,3 +108,12 @@ input[type="submit"]{
     color: #fff;
     text-transform: uppercase;
 }
+input[type="reset"] {
+    margin-top: 25px;
+    background-color: #2bc44f;
+    border: 1px solid #2bc42b;
+    cursor: pointer;
+    color: #bb4848;
+    text-transform: uppercase;
+}
+

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter Matière</title>
+    <title>Ajouter Option</title>
     <link rel="stylesheet" href="assets/css/styleForm.css">
 </head>
 <style>
@@ -59,6 +59,7 @@ if (isset($_POST['button'])) {
 
             if ($sql->execute()) {
                 $message = "Ajout a été réussi.";
+                header("location:option.php");
             } else {
                 die(print_r($sql->errorInfo(), true));
             }
@@ -96,7 +97,6 @@ $idcon = null;
             <input type="submit" value="Ajouter" name="button">
         </form>
     </div>
-<?php  /*include_once("footer.php"); */?>
 
 
 

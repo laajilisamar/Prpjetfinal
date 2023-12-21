@@ -1,0 +1,66 @@
+ /* Style for the form container */
+ form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for form headings */
+h1 {
+    text-align: center;
+    color: #333333;
+}
+
+/* Style for labels */
+label {
+    display: inline-block;
+    width: 120px; /* Adjust the width to align labels */
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+/* Style for input fields */
+input[type="text"],
+input[type="datetime"] {
+    width: calc(100% - 140px); /* Calculate the width to account for label width */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+/* Style for the submit button */
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-left: 130px; /* Align the button with the input fields */
+}
+
+/* Hover effect for the submit button */
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Optional: Add some spacing between form elements */
+br {
+    margin-top: 10px;
+}
+
+/* Style for error messages (optional) */
+.error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+}

@@ -2,42 +2,42 @@
 include 'ConnexionPDO.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $codeMatiere = $_POST['CodeMatiere'];
-    $newNomMatiere = $_POST['NomMatiere'];
-    $newCoefMatiere = $_POST['CoefMatiere'];
-    $newDepartement = $_POST['Departement'];
-    $newSemestre = $_POST['Semestre'];
-    $newOption = $_POST['Option'];
-    $newNbHeureCI = $_POST['NbHeureCI'];
-    $newNbHeureTP = $_POST['NbHeureTP'];
-    $newTypeLabo = $_POST['TypeLabo'];
-    $newBonus = $_POST['Bonus'];
-    $newCategories = $_POST['Categories'];
-    $newSousCategories = $_POST['SousCategories'];
-    $newDateDeb = $_POST['DateDeb'];
-    $newDateFin = $_POST['DateFin'];
+    
+        $newcodeMatiere = $_POST['CodeMatiere'];
+        $newNomMatiere = $_POST['NomMatiere'];
+        $newCoefMatiere = $_POST['CoefMatiere'];
+        $newDepartement = $_POST['Departement'];
+        $newSemestre = $_POST['Semestre'];
+        $newOption = $_POST['Option'];
+        $newNbHeureCI = $_POST['NbHeureCI'];
+        $newNbHeureTP = $_POST['NbHeureTP'];
+        $newTypeLabo = $_POST['TypeLabo'];
+        $newBonus = $_POST['Bonus'];
+        $newCategories = $_POST['Categories'];
+        $newSousCategories = $_POST['SousCategories'];
+        $newDateDeb = $_POST['DateDeb'];
+        $newDateFin = $_POST['DateFin'];
 
-    $query = "UPDATE matieres SET `NomMatière` = ?, `CoefMatière` = ?, `Département` = ?, `Semestre` = ?, `Option` = ?, `NbHeureCI` = ?, `NbHeureTP` = ?, `TypeLabo` = ?, `Bonus` = ?, `Catègories` = ?, `SousCatégories` = ?, `DateDeb` = ?, `DateFin` = ? WHERE `CodeMatiere` = ?";
-$stmt = $idcon->prepare($query);
-$stmt->bindParam(1, $newNomMatiere);
-$stmt->bindParam(2, $newCoefMatiere);
-$stmt->bindParam(3, $newDepartement);
-$stmt->bindParam(4, $newSemestre);
-$stmt->bindParam(5, $newOption);
-$stmt->bindParam(6, $newNbHeureCI);
-$stmt->bindParam(7, $newNbHeureTP);
-$stmt->bindParam(8, $newTypeLabo);
-$stmt->bindParam(9, $newBonus);
-$stmt->bindParam(10, $newCategories);
-$stmt->bindParam(11, $newSousCategories);
-$stmt->bindParam(12, $newDateDeb);
-$stmt->bindParam(13, $newDateFin);
-$stmt->bindParam(14, $codeMatiere);
-$stmt->execute();
-header("Location: Matiers.php");
+        $query = "UPDATE matieres SET `NomMatière` = ?, `CoefMatière` = ?, `Département` = ?, `Semestre` = ?, `Option` = ?, `NbHeureCI` = ?, `NbHeureTP` = ?, `TypeLabo` = ?, `Bonus` = ?, `Catègories` = ?, `SousCatégories` = ?, `DateDeb` = ?, `DateFin` = ? WHERE `CodeMatiere` = ?";
+        $stmt = $idcon->prepare($query);
+        
+        $stmt->bindParam(1, $newNomMatiere);
+        $stmt->bindParam(2, $newCoefMatiere);
+        $stmt->bindParam(3, $newDepartement);
+        $stmt->bindParam(4, $newSemestre);
+        $stmt->bindParam(5, $newOption);
+        $stmt->bindParam(6, $newNbHeureCI);
+        $stmt->bindParam(7, $newNbHeureTP);
+        $stmt->bindParam(8, $newTypeLabo);
+        $stmt->bindParam(9, $newBonus);
+        $stmt->bindParam(10, $newCategories);
+        $stmt->bindParam(11, $newSousCategories);
+        $stmt->bindParam(12, $newDateDeb);
+        $stmt->bindParam(13, $newDateFin);
+        $stmt->bindParam(14, $newcodeMatiere);
+        $stmt->execute();
+        header("Location: Matiers.php");
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +55,6 @@ header("Location: Matiers.php");
     <link rel="stylesheet" href="assets/css/styleForm.css">
 </head>
 <style>
-        /* Style pour diviser le formulaire en deux colonnes */
         .form-container {
             display: flex;
             justify-content: center; /* Centrer horizontalement les deux colonnes */
@@ -107,10 +106,10 @@ if ($ligne) {
         <form method="POST" action="">
            
                 <label >Code Matière :</label>
-                <input type="text"  name="CodeMatiere" value="<?php echo $ligne['CodeMatière']; ?>" readonly>
+                <input type="text"  name="CodeMatiere" value="<?php echo $ligne['CodeMatière']; ?>" >
             
                 <label >Nom Matière</label>
-                <input type="text"  name="NomMatiere" value="<?php echo $ligne['NomMatière']; ?>" required>
+                <input type="text"  name="NomMatiere" value="<?php echo $ligne['NomMatière']; ?>" >
            
                 <label>Coef Matière</label>
                 <input type="text"  name="CoefMatiere" value="<?php echo $ligne['CoefMatière']; ?>">
@@ -125,21 +124,19 @@ if ($ligne) {
                 <input type="text"  name="Option" value="<?php echo $ligne['Option']; ?>">
           
                 <label >Nb Heure CI</label>
-                <input type="text"   name="NbHeureCI"   value="<?php echo $ligne['NbHeureCI']; ?>">
+                <input type="number" min="0"   name="NbHeureCI"   value="<?php echo $ligne['NbHeureCI']; ?>">
                 </div>
              <div class="form-column"> 
                 <label>Nb Heure TP</label>
-                <input type="text"  name="NbHeureTP" value="<?php echo $ligne['NbHeureTP']; ?>">
+                <input type="number" min="0"  name="NbHeureTP" value="<?php echo $ligne['NbHeureTP']; ?>">
        
-
-          
                 <label >TypeLabo</label>
                 <input type="text"  name="TypeLabo" value="<?php echo $ligne['TypeLabo']; ?>">
             
 
           
                 <label >Bonus</label>
-                <input type="text"  name="Bonus" value="<?php echo $ligne['Bonus']; ?>">
+                <input type="number" min="0"   name="Bonus" value="<?php echo $ligne['Bonus']; ?>">
            
 
 
@@ -154,15 +151,15 @@ if ($ligne) {
 
             
                 <label >DateDeb</label>
-                <input type="date"  name="DateDeb" value="<?php echo date('Y-m-d', strtotime($ligne['DateDeb'])); ?>">
+                <input type="datetime-local"  name="DateDeb" value="<?php echo date('Y-m-d', strtotime($ligne['DateDeb'])); ?>">
            
 
             
                 <label >DateFin</label>
-                <input type="date"  name="DateFin" value="<?php echo date('Y-m-d', strtotime($ligne['DateFin'])); ?>">
+                <input type="datetime-local""  name="DateFin" value="<?php echo date('Y-m-d', strtotime($ligne['DateFin'])); ?>">
     </div>
 </div>
-            <input type="submit"name="button" value="Modifier Matière" >
+            <input type="submit" name="button" value="Modifier Matière" >
     </form>
     <?php
 } else {

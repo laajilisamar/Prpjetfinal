@@ -33,6 +33,7 @@ if (isset($_POST['button'])) {
 
             if ($sql->execute()) {
                 $message = "Ajout a été réussi.";
+                header("location:gouvernorats.php");
             } else {
                 die(print_r($sql->errorInfo(), true));
             }
@@ -59,8 +60,32 @@ $idcon = null;
         <form action="" method="POST">
             <label>Gouvernorat</label>
             <input type="text" name="gouv" required>
+            <script>
+function addNumbers() {
+  const numbersString = document.getElementById('numbersInput').value;
+  const numbersArray = numbersString.split(',');
+
+  if (numbersArray.length !== 4) {
+    alert('Please enter four numbers separated by commas');
+    return;
+  }
+
+  let sum = 0;
+  for (const number of numbersArray) {
+    const parsedNumber = parseFloat(number);
+    if (isNaN(parsedNumber)) {
+      alert('Invalid number format');
+      return;
+    }
+
+    sum += parsedNumber;
+  }
+
+  alert('The sum of the numbers is: ' + sum);
+}
+</script>
             <label>CodePostal</label>
-            <input type="number" name="codpostal" required>
+            <input type="number" name="codpostal" id="numbersInput" required>
 
             <input type="submit" value="Ajouter" name="button">
         </form>

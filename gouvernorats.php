@@ -162,9 +162,17 @@
 </div>
 
 <div class="height10"></div>
+<?php
+  if (isset($_GET['search'])) {
+	$search = $_GET['search'];
+	$query = "SELECT * FROM gouvernorats WHERE gouv LIKE '%$search%' OR codpostal LIKE '%$search%'";
+} else {
+	$query = "SELECT * FROM gouvernorats";
+}
 
+?>
 <div class="row">
-        <table id=myTable  class="table table-bordered table-striped">
+        <table id=#myTable  class="table table-bordered table-striped">
             <tr>
                 <th>Gouvernorat</th>
                 <th>CodePostale</th>
@@ -190,9 +198,9 @@ while ($ligne = $stmt->fetch()) {
 							<td>
 
 							<a href='modifierGOV.php?updateGouv=" . $gouv . "'><img src='assets/images/GouvImg/pen.png'></a>
-                            <a href='supprimer.php?gouv=" . $gouv . "' ><img src='assets/images/GouvImg/trash.png'></a>
+							<a href='DeleteGov.php?gouv=".$ligne["gouv"]."'><img src='assets/images/GouvImg/trash.png'></a>
 
-                        </td></tr>";
+							</td></tr>";
 }
 
 ?>

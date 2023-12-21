@@ -135,7 +135,7 @@
 					  
 					</div>
 
-					<form action="gouvernorats.php"methode="GET" class="header-form ml-3" >
+					<form action="piece.php"methode="GET" class="header-form ml-3" >
 						<input type="text" name="search" class="form-control" placeholder="search" id=myTable>
 						<i class="fa fa-search"value="Rechercher"></i>
 					</form> 
@@ -188,7 +188,7 @@ echo "<tr>
                 <td>".$ligne['LibPiece']."</td>
                 <td>
 
-                <a href='modifierGOV.php?updateTypepiece=" . $Typepiece . "'><img src='assets/images/GouvImg/pen.png'></a>
+                <a href='updatePiece.php?updateTypepiece=" . $Typepiece . "'><img src='assets/images/GouvImg/pen.png'></a>
                 <a href='supprimer.php?Typepiece=" . $Typepiece . "' ><img src='assets/images/GouvImg/trash.png'></a>
 
             </td></tr>";
